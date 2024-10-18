@@ -1,0 +1,31 @@
+grades = open('grades.txt', 'w')
+
+grades.write('Alice 88\n')                  # adding names to test
+grades.write('Jeremy 65\n')
+grades.write('Talia 86\n')
+grades.write('Patrick 88\n')
+grades.write('Tyson 82\n')
+grades.close()
+
+grades = 'grades.txt'
+lines = [line.rstrip() for line in open(grades, 'r') ]
+
+
+for line in lines:
+    ll = line.split()
+    name, *scores = ll
+    for line in range(0, len(scores)):
+        scores[line] = int(scores[line])    # trying to convert list of scores to integers
+    
+    print(scores)
+
+    total = sum(scores)                     # i tried to add up the scores but it wouldn't work & i couldn't figure it out D:
+    average = total / len(scores)
+
+    abv_avg_student = 0
+    if scores[line] >= average:             # counting above average scores
+        abv_avg_student += 1
+    
+with open('results.txt', 'w') as results:
+    results.write(f'Average: {average}\n')
+    results.write(f'Above Average Score Count: {abv_avg_student}')
